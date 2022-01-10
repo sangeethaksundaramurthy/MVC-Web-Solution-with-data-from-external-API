@@ -1,0 +1,87 @@
+﻿@model TMDB.Models.MovieTVShowDetails
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DisplayMovieDetails</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <td></td><td></td>
+            <td>
+                @{string imageurl = "https://image.tmdb.org/t/p/original/" + Model.Poster_path;}
+                <a href ="url"> <img src = @imageurl height ="500" width ="400" /></a>
+            </td>
+            <td></td>
+            <td>
+                <div class="centerblock">
+                <h1>@Model.Original_title @Model.Name</h1> <br />
+                @if (Model.Overview == "")
+                {
+                    <h4>This tv show does not have a overview in TMDB </h4><br />
+                }
+                else
+                {
+                    <h4>Overview is @Model.Overview </h4><br />
+                }
+                
+                @if (Model.Release_date.ToString() == Convert.ToString("0001-01-01 00:00:00"))
+                {
+                     <h4>First air Date is @Model.First_air_date </h4> 
+                }                        
+                else
+                {
+                    <h4>Date of Release is @Model.Release_date.ToString("dd/MM/yyyy") </h4> 
+                }             
+                <h4>ID is @Model.Id </h4>
+                @if (Model.Original_language == "en" )
+                    {
+                            <h4> Language is English </h4>
+                    }
+                @if (Model.Original_language == "pt" )
+                     {
+                            <h4> Language is Portuguese </h4>
+                     }
+                @if (Model.Original_language == "ar" )
+                     {
+                            <h4> Language is Arabic </h4>
+                     }
+                @if (Model.Original_language == "es" )
+                     {
+                            <h4> Languages is Spanish - Castilian </h4>
+                     }
+                @if (Model.Original_language == "de" )
+                     {
+                            <h4> Languages is German </h4>
+                     }
+                @if (Model.Original_language == "ru" )
+                     {
+                            <h4> Languages is Russian </h4>
+                     }
+                @if (Model.Original_language == "fr" )
+                     {
+                            <h4> Languages is French </h4>
+                     }
+                @if (Model.Original_language == "ur" )
+                     {
+                            <h4> Languages is Urdu </h4>
+                     }                
+                                                              
+                <h4>Popularity trend is @Model.Popularity </h4>  
+                <h4>Vote average is @Model.Vote_average </h4> 
+                <h4>Vote count is @Model.Vote_count </h4>
+                </div>
+            </td>
+            <td></td><td></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

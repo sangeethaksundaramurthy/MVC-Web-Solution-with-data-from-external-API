@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MovieTVShowDetails>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DisplayMovie</title>    
+</head>
+
+<body>      
+    <center>
+    <h1 style = font-size: 100px>2021 - That's a wrap</h1>
+    <h2 style = font-size: 100px>Let's dive into 2021's best and worst!</h2>
+    </center>
+
+    <form method = "post" action = "Home/SearchButtonOnClick">
+    <center><b><h3>Search for a movie or tv-show: 
+    <input type = "Text" name = "MovieName" size = 75 />
+    <b><input type = "Submit" value = "Search"/> </h3> </b> </center>  <br /> <br /></b>
+    </form>
+       <table>
+         <tr>        
+            @{
+                var i = 0;
+                var count = 0;
+            }
+           
+            @foreach (var item in Model) 
+            {
+        string imageurl = "https://image.tmdb.org/t/p/original/" + item.Poster_path;
+
+                <td>
+                <div> <a href =/Home/DisplayMovieAction/@count> <img src = @imageurl height ="400" width ="275" /></a></div>
+                
+                <div><h4> <b>@item.Original_title.Substring(0,Math.Min(item.Original_title.Length, 25))</b></h4></div>
+                <div><h4> <b>@item.Original_name.Substring(0,Math.Min(item.Original_name.Length, 25)) </b></h4></div>
+                </td>
+                i++;
+                @if (i % 5 == 0)
+                {
+                   @: </tr> <tr>            
+                }
+                count++; 
+            }  
+    </tr>
+    </table>
+   
+ 
+</body>
+</html>
